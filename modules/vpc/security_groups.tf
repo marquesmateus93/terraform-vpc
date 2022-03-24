@@ -28,7 +28,7 @@ resource "aws_security_group" "load_balancer" {
   vpc_id      = aws_vpc.marques_vpc.id
 
   dynamic "ingress" {
-    for_each = local.allow_http_https
+    for_each = local.allow_ssh_http_https
 
     content{
       from_port        = ingress.value.port
@@ -45,6 +45,6 @@ resource "aws_security_group" "load_balancer" {
     cidr_blocks      = ["0.0.0.0/0"]
   }
 
-  tags = merge({Name = "${var.prefix_name}-http-https"},
+  tags = merge({Name = "${var.prefix_name}-ssh-http-https"},
                 var.tags)
 }
