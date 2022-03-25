@@ -4,12 +4,6 @@ variable "prefix_name" {
   default     = ""
 }
 
-variable "all_ips" {
-  description = "Full IPs range."
-  type    = list(string)
-  default = ["0.0.0.0/0"]
-}
-
 variable "vpc_cidr_block" {
   description = "VPC IPs range."
   type        = string
@@ -38,16 +32,6 @@ variable "azs" {
   description = "Default cluster AZs."
   type        = list(string)
   default     = ["us-east-1a", "us-east-1b"]
-}
-
-variable "ports" {
-  description = "Default ports map."
-  type        = map
-  default = {
-    http    = 80
-    https   = 443
-    ssh     = 22
-  }
 }
 
 variable "tags" {
