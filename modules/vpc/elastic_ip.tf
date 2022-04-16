@@ -1,4 +1,4 @@
-resource "aws_eip" "my_elastic_ip" {
+resource "aws_eip" "marques_elastic_ip" {
   count   = length(var.public_cidr_block)
 
   vpc     = true

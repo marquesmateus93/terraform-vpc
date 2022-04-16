@@ -1,9 +1,10 @@
 resource "aws_subnet" "marques_public_subnet" {
   count = length(var.azs)
 
-  vpc_id            = aws_vpc.marques_vpc.id
-  cidr_block        = var.public_cidr_block[count.index]
-  availability_zone = var.azs[count.index]
+  vpc_id                  = aws_vpc.marques_vpc.id
+  cidr_block              = var.public_cidr_block[count.index]
+  map_public_ip_on_launch = true
+  availability_zone       = var.azs[count.index]
 
   tags = merge ({Name = "${var.prefix_name}-public-vpc"},
                 {Cidr_Block = substr(var.public_cidr_block[count.index], -6, -3)},
