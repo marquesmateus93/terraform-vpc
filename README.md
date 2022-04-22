@@ -1,7 +1,7 @@
 # Terraform VPC
 
 ## About:
-The project creates an AWS VPC to provide communication between three subnets layers: one public and two privates.
+The project contains a module that creates an AWS VPC structure to provide communication between three subnets layers: one public and two privates.
 
 ### - Public Subnets:
 Allows communication from the internet providing access to private subnets. Bastion hosts could do the communication.
@@ -17,6 +17,9 @@ The application machines don't have external access and should be access by SSH,
 
 The database subnet was thought to be associated with an RDS instance and be accessed just from private subnets in a specific port.
 
+## How To Deploy:
+
+This module should be consumed by [Terragrunt VPC](https://github.com/Dev-Marques-Ops-Live-Infrastructure/terragrunt-vpc) Project.
 
 ## Structure:
 <img src="https://user-images.githubusercontent.com/5325106/164470862-0a546613-65de-455e-b329-493755daab2a.png" width="600" height="700"/>
