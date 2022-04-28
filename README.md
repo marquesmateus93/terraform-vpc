@@ -18,7 +18,7 @@ The application machines don't have external access and should be access by SSH,
 The database subnet was thought to be associated with an RDS instance and be accessed just from private subnets in a specific port.
 
 ## Structure
-![Marques VPC](/var/home/Marques/Downloads/Marques VPC.png?raw=false "Marques VPC")
+<img src="https://user-images.githubusercontent.com/5325106/164470862-0a546613-65de-455e-b329-493755daab2a.png" width="600" height="700"/>
 
 ## Requirements
 
