@@ -37,4 +37,5 @@ variable "azs" {
 variable "tags" {
   description = "Tracking tags."
   type        = map
+  default      = {}
 }
