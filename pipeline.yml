@@ -1,5 +1,6 @@
 parameters:
   - name: yesNo
+    displayName: Yes or No
     type: boolean
     default: true
 
