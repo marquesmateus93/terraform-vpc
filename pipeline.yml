@@ -4,5 +4,4 @@ parameters:
     default: true
 
 steps:
-- script: 
-  echo ${{parameters.yesNo}}
+- script: echo ${{parameters.yesNo}}
