@@ -8,7 +8,7 @@ variable "prefix_name" {
         var.prefix_name
       )
     )
-    error_message = "Just uppercase and hifen are allowed."
+    error_message = "The Prefix Name must contain just lowercase and hyphens."
   }
 }
 
@@ -27,7 +27,11 @@ variable "vpc_cidr_block" {
 variable "public_cidr_block" {
   description = "Public subnet IPs range."
   type        = list(string)
-  default     = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]
+  default     = [
+    "10.0.1.0/24",
+    "10.0.2.0/24",
+    "10.0.3.0/24"
+  ]
   validation {
     condition = alltrue([
       for cidr in var.public_cidr_block : can(cidrnetmask(cidr))
@@ -39,7 +43,11 @@ variable "public_cidr_block" {
 variable "private_cidr_block" {
   description = "Private subnet IPs range."
   type        = list(string)
-  default     = ["10.0.11.0/24", "10.0.12.0/24", "10.0.13.0/24"]
+  default     = [
+    "10.0.11.0/24",
+    "10.0.12.0/24",
+    "10.0.13.0/24"
+  ]
   validation {
     condition = alltrue([
       for cidr in var.private_cidr_block : can(cidrnetmask(cidr))
@@ -51,7 +59,11 @@ variable "private_cidr_block" {
 variable "data_resource_cidr_block" {
   description = "Data resources subnet IPs range."
   type        = list(string)
-  default     = ["10.0.21.0/24", "10.0.22.0/24", "10.0.33.0/24"]
+  default     = [
+    "10.0.21.0/24",
+    "10.0.22.0/24",
+    "10.0.33.0/24"
+  ]
   validation {
     condition = alltrue([
       for cidr in var.data_resource_cidr_block : can(cidrnetmask(cidr))
@@ -63,13 +75,17 @@ variable "data_resource_cidr_block" {
 variable "azs" {
   description = "Default AZs range. Ohio."
   type        = list(string)
-  default     = ["us-east-2a", "us-east-2b", "us-east-2c"]
+  default     = [
+    "us-east-2a",
+    "us-east-2b",
+    "us-east-2c"
+  ]
   validation {
     condition = alltrue([
       for cidr in var.azs : can(regex("(us(-gov)?|ap|ca|cn|eu|sa)-(central|(north|south)?(east|west)?)-\\d+[a-e]{1}",
           cidr))
     ])
-    error_message = "Provide a string list of valid example pattern: 'us-east-2a'."
+    error_message = "Provide a string list of valid example pattern."
   }
 }
 
