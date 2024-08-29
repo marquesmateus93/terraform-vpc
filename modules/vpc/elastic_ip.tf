@@ -1,9 +1,9 @@
-resource "aws_eip" "marques_elastic_ip" {
+resource "aws_eip" "elastic_ip" {
   count   = length(var.public_cidr_block)
 
   domain  = "vpc"
 
-  tags = merge({Name = local.marques_elastic_ip.name},
+  tags = merge({Name = local.elastic_ip.name},
                {elastic_ip = count.index},
                 var.tags)
 }

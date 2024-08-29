@@ -34,7 +34,9 @@ variable "public_cidr_block" {
   ]
   validation {
     condition = alltrue([
-      for cidr in var.public_cidr_block : can(cidrnetmask(cidr))
+      for cidr in var.public_cidr_block : can(
+        cidrnetmask(cidr)
+      )
     ])
     error_message = "Provide a list string of valid pattern: IPs/Mask."
   }
@@ -50,14 +52,16 @@ variable "private_cidr_block" {
   ]
   validation {
     condition = alltrue([
-      for cidr in var.private_cidr_block : can(cidrnetmask(cidr))
+      for cidr in var.private_cidr_block : can(
+        cidrnetmask(cidr)
+      )
     ])
     error_message = "Provide a list string of valid pattern: IPs/Mask."
   }
 }
 
-variable "data_resource_cidr_block" {
-  description = "Data resources subnet IPs range."
+variable "resources_cidr_block" {
+  description = "Resources subnet IPs range."
   type        = list(string)
   default     = [
     "10.0.21.0/24",
@@ -66,7 +70,9 @@ variable "data_resource_cidr_block" {
   ]
   validation {
     condition = alltrue([
-      for cidr in var.data_resource_cidr_block : can(cidrnetmask(cidr))
+      for cidr in var.resources_cidr_block : can(
+        cidrnetmask(cidr)
+      )
     ])
     error_message = "Provide a list string of valid pattern: IPs/Mask."
   }
@@ -82,7 +88,9 @@ variable "azs" {
   ]
   validation {
     condition = alltrue([
-      for cidr in var.azs : can(regex("(us(-gov)?|ap|ca|cn|eu|sa)-(central|(north|south)?(east|west)?)-\\d+[a-e]{1}",
+      for cidr in var.azs : can(
+        regex(
+          "(us(-gov)?|ap|ca|cn|eu|sa)-(central|(north|south)?(east|west)?)-\\d+[a-e]{1}",
           cidr))
     ])
     error_message = "Provide a string list of valid example pattern."
